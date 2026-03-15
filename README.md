@@ -86,3 +86,7 @@ MIT — free to use, share, and modify.
 
 Built for Utopia Age 114: The Age of Convergence  
 Created by Orcasaurus Wrecks (GitHub: [cnold-dev](https://github.com/cnold-dev))
+
+## Video Tutorial
+
+[![Utopia War Calculator Tutorial](https://img.youtube.com/vi/Eiw8PbTn3x8/0.jpg)](https://www.youtube.com/watch?v=Eiw8PbTn3x8)
