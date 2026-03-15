@@ -6,17 +6,8 @@ window.addEventListener('load', function () {
   const rightAd = document.querySelector('#skyscraper-ad');
   if (rightAd) rightAd.style.display = 'none';
  
-  const contentArea = document.querySelector('#content-area');
   const resourceBar = document.querySelector('#resource-bar');
   const gameNav = document.querySelector('#game-navigation');
- 
-  // --- YELLOW BOX ---
-  if (contentArea) {
-    const yellowBox = document.createElement('div');
-    yellowBox.id = 'yellow-helper-box';
-    yellowBox.innerHTML = 'Hello World';
-    contentArea.parentNode.insertBefore(yellowBox, contentArea);
-  }
  
   // --- VERTICAL BOX using Shadow DOM ---
   const vertHost = document.createElement('div');
@@ -31,6 +22,7 @@ window.addEventListener('load', function () {
       #calc-box {
         position: absolute;
         width: 220px;
+        height: auto;
         overflow-x: hidden;
         overflow-y: visible;
         background-color: #0a0a1a;
@@ -181,9 +173,8 @@ window.addEventListener('load', function () {
     emerald:  { costMod: 3.0, hpMod: 8.415,  label: 'Emerald' },
   };
  
-  // --- TWO SEPARATE PROVINCE DATA ARRAYS ---
-  let enemyProvinceData = [];  // Enemy CSV — Overpop Calculator
-  let kdProvinceData = [];     // Own KD CSV — Dragon Calculators
+  let enemyProvinceData = [];
+  let kdProvinceData = [];
  
   // --- INTEL AGE HELPERS (values in seconds) ---
   function formatSeconds(secs) {
@@ -206,23 +197,13 @@ window.addEventListener('load', function () {
  
   // --- POSITIONING ---
   function positionAll() {
-    const yellowBox = document.querySelector('#yellow-helper-box');
-    if (resourceBar && contentArea && yellowBox) {
-      yellowBox.style.width = resourceBar.offsetWidth + 'px';
-      yellowBox.style.marginLeft = (resourceBar.offsetLeft + contentArea.offsetLeft) + 'px';
-    }
     if (resourceBar && gameNav) {
       const barRect = resourceBar.getBoundingClientRect();
       const calcBox = q('calc-box');
       if (calcBox) {
         calcBox.style.left = (barRect.right + 3) + 'px';
         calcBox.style.top = (barRect.top + window.scrollY) + 'px';
-        const gameContent = document.querySelector('.game-content');
-        const heightEl = gameContent || gameNav;
-        const heightRect = heightEl.getBoundingClientRect();
-        const gameHeight = heightRect.bottom - barRect.top;
-        const contentHeight = calcBox.scrollHeight;
-        calcBox.style.height = Math.max(gameHeight, contentHeight) + 'px';
+        calcBox.style.height = 'auto';
         calcBox.style.overflowY = 'visible';
       }
     }
@@ -297,7 +278,6 @@ window.addEventListener('load', function () {
     return data;
   }
  
-  // --- UPDATE CSV STATUS ---
   function updateCSVStatus(statusId, loaded, count, filename) {
     const status = q(statusId);
     if (status) {
@@ -310,7 +290,6 @@ window.addEventListener('load', function () {
     }
   }
  
-  // --- POPULATE ENEMY DROPDOWN ---
   function populateEnemyDropdown() {
     const select = q('province-select');
     if (!select) return;
@@ -328,7 +307,6 @@ window.addEventListener('load', function () {
     }
   }
  
-  // --- LOAD ENEMY CSV ---
   q('csv-upload').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -345,7 +323,6 @@ window.addEventListener('load', function () {
     reader.readAsText(file);
   });
  
-  // --- LOAD OWN KD CSV ---
   q('kd-csv-upload').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -363,7 +340,6 @@ window.addEventListener('load', function () {
     calculate(this.value);
   });
  
-  // --- MISSING DATA WARNINGS ---
   function checkMissingData(p) {
     const warnings = [];
     if (p.peons === 0 && p.wiz === 0 && p.thv === 0)
@@ -375,7 +351,6 @@ window.addEventListener('load', function () {
     return warnings;
   }
  
-  // --- OVERPOP CALCULATE ---
   function calculate(index) {
     const resultsEl = q('calc-results');
     const intelEl = q('intel-age');
@@ -479,7 +454,6 @@ window.addEventListener('load', function () {
     resultsEl.innerHTML = html;
   }
  
-  // --- DRAGON FUND CALCULATOR ---
   q('dragon-calc-btn').addEventListener('click', function() {
     const dragonResults = q('dragon-results');
     if (!dragonResults) return;
@@ -549,7 +523,6 @@ window.addEventListener('load', function () {
     }
   });
  
-  // --- DRAGON SLAY CALCULATOR ---
   q('slay-calc-btn').addEventListener('click', function() {
     const slayResults = q('slay-results');
     if (!slayResults) return;
