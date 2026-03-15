@@ -1,0 +1,89 @@
+/* This styles our floating helper box */
+#game-helper-overlay {
+  /* Fixed means it stays in place even when you scroll */
+  position: fixed;
+ 
+  /* Position it in the bottom-right corner */
+  bottom: 20px;
+  right: 20px;
+ 
+  /* Size of the box */
+  width: 220px;
+  min-height: 60px;
+ 
+  /* Visual styling */
+  background-color: #1a1a2e;
+  color: #e0e0ff;
+  border: 2px solid #4a4a8a;
+  border-radius: 8px;
+  padding: 12px 16px;
+ 
+  /* Make sure it floats ABOVE the game's content */
+  z-index: 999999;
+ 
+  /* Typography */
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+ 
+  /* Subtle shadow for depth */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+ 
+/* A small title bar at the top of the box */
+#game-helper-overlay .helper-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #7878bb;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #2a2a4a;
+  padding-bottom: 6px;
+}
+ 
+#yellow-helper-box {
+  height: 90px;
+  margin-top: 2px;
+  margin-bottom: -5px;
+  background-color: #1a1a2e;
+  color: #00ff00;
+  border-top: 2px solid #8B6914;
+  border-bottom: 2px solid #8B6914;
+  padding: 8px 16px;
+  font-family: monospace;
+  font-size: 14px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+ 
+.calc-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8B6914;
+  border-bottom: 1px solid #8B6914;
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+}
+ 
+.calc-section {
+  margin-bottom: 6px;
+}
+ 
+.calc-label {
+  font-size: 11px;
+  color: #8B6914;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+ 
+.calc-intel {
+  font-size: 11px;
+  margin-top: 4px;
+}
+ 
+.calc-results {
+  font-size: 12px;
+  margin-top: 4px;
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3, // Chrome/Edge rulebook to use
+  "name": "Utopia War Calculator", // Display name of the Extension
+  "version": "1.0", // Version that shows on extension page
+  "description": "A helper overlay for text-based browser games", // Extension description that shows on Extension page
+  "content_scripts": [ // list of scripts to inject into the webpage
+    {
+      "matches": [
+        "https://utopia-game.com/*" // defines the pages in which to allow the overlay to display
+      ],
+      "css": [
+        "overlay.css" // injects a css stylesheet inot the webpage
+      ],
+      "js": [
+        "overlay.js" // injects file overlay.js inot the page. which will create the box overlay
+      ]
+    }
+  ]
+}
